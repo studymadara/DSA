@@ -15,7 +15,7 @@ public class SpiralMatrix2
         int counter=1;
         while(true)
         {
-            if(matrix[top][left]!=0)
+            if(top>=n || left>=n || matrix[top][left]!=0)
                 break;
 
             for(int i=left;i<=right;i++)
@@ -28,13 +28,15 @@ public class SpiralMatrix2
                 matrix[i][right]=counter++;
             }
             right--;
-            for(int i=right;i<=left;i--)
+            for(int i=right;i>=left;i--)
             {
+                System.out.println("bottom :: "+bottom+" right :: "+i);
                 matrix[bottom][i]=counter++;
             }
             bottom--;
-            for(int i=bottom;i<=top;i--)
+            for(int i=bottom;i>=top;i--)
             {
+                System.out.println("i :: "+i+" left :: "+left);
                 matrix[i][left]=counter++;
             }
             left++;
@@ -45,6 +47,6 @@ public class SpiralMatrix2
     public static void main(String args[])
     {
         SpiralMatrix2 spiralMatrix2=new SpiralMatrix2();
-        System.out.println(Arrays.toString(spiralMatrix2.generateMatrix(3)));
+        System.out.println(Arrays.deepToString(spiralMatrix2.generateMatrix(3)));
     }
 }
